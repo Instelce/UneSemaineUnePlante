@@ -1,0 +1,33 @@
+// Variable
+$color-lightyellow: rgb(254, 254, 227);
+$color-buff: rgb(244, 226, 133);
+$color-deepchampagne: rgb(242, 204, 143);
+$color-darksalmon: rgb(221, 151, 135);
+$color-etonblue: rgb(119, 191, 163);
+$color-keppel: rgb(82, 182, 154);
+$color-bluemunsell: rgb(22, 138, 173);
+$color-white: rgba(255, 255, 255, 1);
+
+$font-abrilfatface: 'Abril Fatface', cursive;
+$font-cairo: 'Cairo', sans-serif;
+$font-cinzel: 'Cinzel', serif;
+
+// Main Style
+body {
+    width: 100%;
+    height: auto;
+
+    background: $color-lightyellow;
+
+    font-size: 18px;
+    font-weight: 400;
+    font-family: $font-abrilfatface;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+// Imports
+@import 'libs/reset.scss';
