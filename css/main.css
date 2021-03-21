@@ -57,4 +57,96 @@ td, th {
   padding: 0;
 }
 
+.topbar {
+  width: 100%;
+  padding: 20px 40px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar:hover .topbar__name {
+  opacity: 1;
+}
+.topbar .topbar__name {
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  text-transform: uppercase;
+  color: #fefee3;
+  transition: opacity 0.3s 0.2s;
+}
+.topbar .topbar__name span {
+  display: block;
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+.topbar .topbar__name span .letter {
+  display: inline-block;
+}
+.topbar .topbar__name > span:nth-child(2) {
+  -webkit-text-stroke: 1px #fefee3;
+  -webkit-text-fill-color: transparent;
+}
+.topbar .topbar__name:hover span:nth-child(1) {
+  transform: translateY(-100%);
+}
+.topbar .topbar__name:hover span:nth-child(2) {
+  transform: translateY(-100%);
+}
+.topbar .topbar__toggle {
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.topbar .topbar__toggle:hover span:nth-child(1)::before {
+  width: 10px;
+}
+.topbar .topbar__toggle:hover span:nth-child(2)::before {
+  width: 20px;
+}
+.topbar .topbar__toggle:hover span:nth-child(3)::before {
+  width: 30px;
+}
+.topbar .topbar__toggle span {
+  width: 100%;
+  height: 2px;
+  z-index: 5;
+  display: block;
+  content: "";
+  background: #fefee3;
+  position: absolute;
+  transition: background 0.3s;
+}
+.topbar .topbar__toggle span::before {
+  width: 0px;
+  height: 100%;
+  z-index: 6;
+  content: "";
+  position: absolute;
+  left: 0px;
+  background: #77bfa3;
+  transition: width 0.3s;
+}
+.topbar .topbar__toggle span:nth-child(1) {
+  transform: translateY(-10px);
+}
+.topbar .topbar__toggle span:nth-child(3) {
+  transform: translateY(10px);
+}
+
+header {
+  height: 100vh;
+  background: #52b69a;
+}
+
 /*# sourceMappingURL=main.css.map */
