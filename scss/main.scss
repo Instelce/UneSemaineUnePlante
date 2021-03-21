@@ -16,6 +16,7 @@ $font-cinzel: 'Cinzel', serif;
 body {
     width: 100%;
     height: auto;
+    overflow-x: hidden !important;
 
     background: $color-lightyellow;
 
@@ -27,6 +28,10 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+section {
+    padding: 20px 40px;
 }
 
 // Imports

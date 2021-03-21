@@ -1,5 +1,110 @@
 header {
+    width: 100%;
     height: 100vh;
+    z-index: 1;
+
+    position: relative;
 
     background: $color-keppel;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    text-transform: uppercase;
+
+    img {
+        width: 600px;
+        height: auto;
+        z-index: 1;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+
+        position: absolute;
+
+        clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+    }
+
+    .header__plant_name, 
+    .header__plant_s_name, 
+    .header__plant_class {
+        z-index: 2;
+        position: relative;
+        cursor: default;
+
+        span {
+            z-index: 3;
+            top: 0; left: 0;
+            position: absolute;
+            white-space: nowrap;
+            clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+        }
+    }
+
+    .header__plant_name {
+        transform: translateX(-60px);
+
+        font-size: 180px;
+        -webkit-text-stroke: 2px $color-lightyellow;
+        -webkit-text-fill-color: transparent;
+
+        span {
+            -webkit-text-fill-color: $color-lightyellow;
+            -webkit-text-stroke: 2px $color-lightyellow;
+        }
+    }
+
+    .header__plant_s_name {
+        transform: translateX(180px);
+
+        font-size: 80px;
+        color: $color-buff;
+
+        span {
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            -webkit-text-fill-color: $color-darksalmon;
+            -webkit-text-stroke: 2px $color-darksalmon;
+        }
+    }
+
+    .header__plant_class {
+        transform: translateX(-140px);
+
+        font-size: 60px;
+        font-family: $font-cinzel;
+        font-weight: 900;
+        -webkit-text-stroke: 1px $color-buff;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .header__corner {
+        width: 100%;
+        height: 40px;
+        bottom: 0; left: 0;
+
+        position: absolute;
+
+        background: $color-lightyellow;
+
+        &::after {
+            width: 40%;
+            height: 100%;
+            bottom: 0; right: 0;
+            position: absolute;
+            content: "";
+            background: $color-keppel;
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 4% 100%);
+        }
+        &::before {
+            width: 35%;
+            height: 60%;
+            z-index: 3;
+            bottom: 25%; right: 0;
+            position: absolute;
+            content: "";
+            background: $color-etonblue;
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 3% 100%);
+        }
+    }
 }
