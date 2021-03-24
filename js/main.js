@@ -12,4 +12,15 @@ topbar.addEventListener('mouseover', function(){
       duration: 100,
       delay: (el, i) => 30 * i
     })
-})
+});
+
+// Header Parralax
+document.addEventListener('mousemove', parallax);
+function parallax(e) {
+  this.querySelectorAll('.header__layer').forEach(layer => {
+    var speed = layer.getAttribute('data-speed');
+    var x = (window.innerWidth - e.pageX * speed) / 100;
+    var y = (window.innerWidth - e.pageY * speed) / 100;
+    layer.style.transform = `translate(${x}px, ${y}px)`
+  });
+}

@@ -1,0 +1,28 @@
+
+// Fiche d'identité 
+.identity__fiche {
+    // height: 400px;
+    padding: 40px 40px;
+    background: $color-keppel;
+
+    &::before {
+        width: 40%;
+        height: 40px;
+        top: 0; right: 0;
+
+        content: "";
+        position: absolute;
+        background: $color-lightyellow;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 4% 100%);
+    }
+    &::after {
+        width: 40%;
+        height: 40px;
+        bottom: 0; left: 0;
+
+        content: "";
+        position: absolute;
+        background: $color-lightyellow;
+        clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
+    }
+}

@@ -14,7 +14,11 @@ a {
 }
 
 section {
+  width: 100%;
+  height: auto;
+  margin: 20px 0px;
   padding: 20px 40px;
+  position: relative;
 }
 
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
@@ -67,7 +71,7 @@ td, th {
   padding: 20px 40px;
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -165,9 +169,6 @@ header img {
   width: 600px;
   height: auto;
   z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   position: absolute;
   clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
 }
@@ -244,6 +245,31 @@ header .header__corner::before {
   content: "";
   background: #77bfa3;
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 3% 100%);
+}
+
+.identity__fiche {
+  padding: 40px 40px;
+  background: #52b69a;
+}
+.identity__fiche::before {
+  width: 40%;
+  height: 40px;
+  top: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  background: #fefee3;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 4% 100%);
+}
+.identity__fiche::after {
+  width: 40%;
+  height: 40px;
+  bottom: 0;
+  left: 0;
+  content: "";
+  position: absolute;
+  background: #fefee3;
+  clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
 }
 
 /*# sourceMappingURL=main.css.map */

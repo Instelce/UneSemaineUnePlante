@@ -31,10 +31,15 @@ a {
 }
 
 section {
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
     padding: 20px 40px;
+    position: relative;
 }
 
 // Imports
 @import 'libs/reset.scss';
 @import 'parts/topbar.scss';
 @import 'parts/header.scss';
+@import 'parts/section.scss';
