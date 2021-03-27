@@ -1,3 +1,8 @@
+// import Cursor from "./cursor";
+
+// const cursor = new Cursor();
+
+
 // Topbar Animation Hover Link
 const topbar = document.querySelector('.topbar')
 var firstspan = document.querySelector('.topbar__name span:nth-child(1)');

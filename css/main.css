@@ -1,3 +1,7 @@
+* {
+  cursor: none;
+}
+
 body {
   width: 100%;
   height: auto;
@@ -66,6 +70,47 @@ td, th {
   padding: 0;
 }
 
+.cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: var(--height);
+  transform: translate(calc(var(--x) - var(--width) / 2), calc(var(--y) - var(--height) / 2));
+  transition-duration: 125ms;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition-property: width, height, transform;
+  transition: 150ms width cubic-bezier(0.39, 0.575, 0.565, 1), 150ms height cubic-bezier(0.39, 0.575, 0.565, 1), 300ms transform cubic-bezier(0.39, 0.575, 0.565, 1);
+  z-index: 1000;
+  pointer-events: none;
+  will-change: transform;
+}
+.cursor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  border-radius: var(--radius);
+  border: 2px solid #f2cc8f;
+  opacity: var(--scale);
+  transform: scale(var(--scale));
+  transition: 150ms opacity cubic-bezier(0.39, 0.575, 0.565, 1), 150ms transform cubic-bezier(0.39, 0.575, 0.565, 1), 150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+@media (pointer: fine) {
+  .cursor {
+    display: block;
+  }
+}
+html:not(html:hover) .cursor::after {
+  opacity: 0;
+  transform: scale(0);
+}
+
 .topbar {
   width: 100%;
   padding: 20px 40px;
@@ -108,9 +153,10 @@ td, th {
   transform: translateY(-100%);
 }
 .topbar .topbar__toggle {
-  width: 40px;
-  height: 30px;
-  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  z-index: 1100;
+  border-radius: 50%;
   position: relative;
   display: flex;
   align-items: center;
@@ -118,16 +164,18 @@ td, th {
   flex-direction: column;
 }
 .topbar .topbar__toggle:hover span:nth-child(1)::before {
-  width: 10px;
+  width: 25%;
 }
 .topbar .topbar__toggle:hover span:nth-child(2)::before {
-  width: 20px;
+  width: 50%;
+  transition: width 0.3s 0.1s;
 }
 .topbar .topbar__toggle:hover span:nth-child(3)::before {
-  width: 30px;
+  width: 75%;
+  transition: width 0.3s 0.2s;
 }
 .topbar .topbar__toggle span {
-  width: 100%;
+  width: 60%;
   height: 2px;
   z-index: 5;
   display: block;
@@ -177,7 +225,6 @@ header .header__plant_s_name,
 header .header__plant_class {
   z-index: 2;
   position: relative;
-  cursor: default;
 }
 header .header__plant_name span,
 header .header__plant_s_name span,

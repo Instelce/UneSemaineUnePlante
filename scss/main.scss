@@ -13,6 +13,10 @@ $font-cairo: 'Cairo', sans-serif;
 $font-cinzel: 'Cinzel', serif;
 
 // Main Style
+* {
+    cursor: none;
+}
+
 body {
     width: 100%;
     height: auto;
@@ -40,6 +44,7 @@ section {
 
 // Imports
 @import 'libs/reset.scss';
+@import 'parts/cursor.scss';
 @import 'parts/topbar.scss';
 @import 'parts/header.scss';
 @import 'parts/section.scss';

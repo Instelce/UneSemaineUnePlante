@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <!-- Cursor -->
+    <div class="cursor"></div>
+
     <!-- Topbar -->
     <nav class="topbar">
         <a class="topbar__name" href="#">
@@ -21,7 +24,7 @@
             <span>La violette</span>
         </a>
 
-        <div class="topbar__toggle">
+        <div class="topbar__toggle cursor-hover-1">
             <span></span>
             <span></span>
             <span></span>
@@ -48,13 +51,15 @@
 
     <!-- Section Fiche d'identité -->
     <section class="identity__fiche">
-        <span class="corner__right"></span>
-        <span class="corner__left"></span>
+        <h3>Fiche d'identité</h3>
     </section>
     
-    <!-- Scripts (Anime.js) -->
+    <!-- Scripts (Anime.js, Paper.js, Simplex Noise, GSAP) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-core.min.js" integrity="sha512-n8kxMM6jgawwNHl1HJmOXz+l8bMYaq0SrYrbCijlUnUUNXuD4ajzKmdXSTFarH3PViz54jfiSNUUAfTOhIDmRg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js" integrity="sha512-UFPpekaMf0TrCIkPv9mRT3reo/HzSjkOLq57Rtzb+E1ej1TRUOes6J/Ge4uZXyxWA9b4i5DqSZns79YaUoJ2kA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ==" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
-    <script src="js/cursor.js"></script>
+    <script src="js/cursor.js" type="module"></script>
 </body>
 </html>

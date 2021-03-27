@@ -35,11 +35,6 @@
                 display: inline-block;
             }
         }
-
-        // & > span:nth-child(1) {
-        //     font-family: $font-cinzel;
-        //     font-weight: 600;
-        // }
         
         & > span:nth-child(2) {
             -webkit-text-stroke: 1px $color-lightyellow;
@@ -58,9 +53,10 @@
 
     // Toggle Button
     .topbar__toggle {
-        width: 40px;
-        height: 30px;
-        cursor: pointer;
+        width: 55px;
+        height: 55px;
+        z-index: 1100;
+        border-radius: 50%;
 
         position: relative;
 
@@ -71,20 +67,22 @@
 
         &:hover {
             span:nth-child(1)::before {
-                width: 10px;
+                width: 25%;
             }
 
             span:nth-child(2)::before {
-                width: 20px;
+                width: 50%;
+                transition: width 0.3s 0.1s;
             }
 
             span:nth-child(3)::before {
-                width: 30px;
+                width: 75%;
+                transition: width 0.3s 0.2s;
             }
         }
 
         span {
-            width: 100%;
+            width: 60%;
             height: 2px;
             z-index: 5;
 
