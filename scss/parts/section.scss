@@ -25,4 +25,67 @@
         background: $color-lightyellow;
         clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
     }
+
+    h3 {
+        color: $color-lightyellow;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+
+    .fiche__container {
+        margin: 20px 0px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 40%;
+        grid-template-rows: auto auto;
+        grid-gap: 10px 40px;
+
+        .fiche__col {
+            position: relative;
+
+            h4 {
+                font-size: 20px;
+                color: $color-deepchampagne;
+                text-transform: uppercase;
+            }
+            p {
+                line-height: 20px;
+                font-weight: 200;
+                font-family: $font-cairo;
+                color: $color-lightyellow;
+            }
+
+            div:nth-child(1) {
+                margin-bottom: 20px;
+            }
+
+            &:nth-child(2) {
+                // grid-row: span 2;
+
+                &::before {
+                    width: 1px;
+                    height: 100%;
+                    content: "";
+
+                    transform: translateX(-20px);
+                    position: absolute;
+
+                    background: $color-lightyellow;
+                }
+            }
+        }
+
+        .fiche__carousel {
+            height: 300px;
+            overflow: hidden;
+            clip-path: polygon(85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%, 0 0);
+
+            &:hover {
+                
+            }
+
+            img {
+            }
+        }
+    }
 }

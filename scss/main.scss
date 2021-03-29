@@ -14,7 +14,6 @@ $font-cinzel: 'Cinzel', serif;
 
 // Main Style
 * {
-    cursor: none;
 }
 
 body {
@@ -24,14 +23,19 @@ body {
 
     background: $color-lightyellow;
 
-    font-size: 18px;
+    cursor: url(../images/cursor.svg) 3 3, auto;
+
+    font-size: 16px;
     font-weight: 400;
     font-family: $font-abrilfatface;
+
+    transition: 2ms cursor;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+    cursor: none;
 }
 
 section {
@@ -45,6 +49,7 @@ section {
 // Imports
 @import 'libs/reset.scss';
 @import 'parts/cursor.scss';
+@import 'parts/carousel.scss';
 @import 'parts/topbar.scss';
 @import 'parts/header.scss';
 @import 'parts/section.scss';

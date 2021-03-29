@@ -1,20 +1,19 @@
-* {
-  cursor: none;
-}
-
 body {
   width: 100%;
   height: auto;
   overflow-x: hidden !important;
   background: #fefee3;
-  font-size: 18px;
+  cursor: url(../images/cursor.svg) 3 3, auto;
+  font-size: 16px;
   font-weight: 400;
   font-family: "Abril Fatface", cursive;
+  transition: 2ms cursor;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  cursor: none;
 }
 
 section {
@@ -71,12 +70,13 @@ td, th {
 }
 
 .cursor {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: var(--width);
   height: var(--height);
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: none;
+  opacity: var(--opacity);
   transform: translate(calc(var(--x) - var(--width) / 2), calc(var(--y) - var(--height) / 2));
   transition-duration: 125ms;
   transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -94,11 +94,12 @@ td, th {
   left: 0;
   right: 0;
   z-index: 1100;
+  background: var(--fill);
   border-radius: var(--radius);
-  border: 2px solid #f2cc8f;
+  border: var(--stroke) solid var(--stroke-color);
   opacity: var(--scale);
   transform: scale(var(--scale));
-  transition: 150ms opacity cubic-bezier(0.39, 0.575, 0.565, 1), 150ms transform cubic-bezier(0.39, 0.575, 0.565, 1), 150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: 150ms opacity cubic-bezier(0.39, 0.575, 0.565, 1), 150ms background cubic-bezier(0.39, 0.575, 0.565, 1), 150ms transform cubic-bezier(0.39, 0.575, 0.565, 1), 150ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 @media (pointer: fine) {
@@ -111,25 +112,73 @@ html:not(html:hover) .cursor::after {
   transform: scale(0);
 }
 
+.carousel {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.carousel:hover .carousel__next, .carousel .carousel__prev {
+  opacity: 1;
+}
+
+.carousel__container {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s;
+}
+.carousel__container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.carousel__item {
+  float: left;
+}
+
+.carousel__next,
+.carousel__prev {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: #fefee3;
+  background-size: 20px 20px;
+  border-radius: 50%;
+  top: 50%;
+  right: 0px;
+  margin-top: -20px;
+  opacity: 0;
+  transition: opacity 0.3s, display 0.3s;
+}
+
+.carousel__prev {
+  right: auto;
+  left: 0px;
+}
+
+.carousel__next--hidden,
+.carousel__prev--hidden {
+  opacity: 0;
+  display: none;
+}
+
 .topbar {
   width: 100%;
   padding: 20px 40px;
   top: 0;
   left: 0;
   position: fixed;
-  z-index: 10;
+  z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.topbar:hover .topbar__name {
-  opacity: 1;
+.topbar:hover .topbar__name > span:nth-child(1) {
+  transform: translateY(0%);
 }
 .topbar .topbar__name {
   height: 20px;
   position: relative;
   overflow: hidden;
-  opacity: 0;
   text-transform: uppercase;
   color: #fefee3;
   transition: opacity 0.3s 0.2s;
@@ -141,6 +190,9 @@ html:not(html:hover) .cursor::after {
 }
 .topbar .topbar__name span .letter {
   display: inline-block;
+}
+.topbar .topbar__name > span:nth-child(1) {
+  transform: translateY(-100%);
 }
 .topbar .topbar__name > span:nth-child(2) {
   -webkit-text-stroke: 1px #fefee3;
@@ -162,6 +214,9 @@ html:not(html:hover) .cursor::after {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.topbar .topbar__toggle:hover {
+  cursor: none;
 }
 .topbar .topbar__toggle:hover span:nth-child(1)::before {
   width: 25%;
@@ -191,7 +246,7 @@ html:not(html:hover) .cursor::after {
   content: "";
   position: absolute;
   left: 0px;
-  background: #77bfa3;
+  background: #dd9787;
   transition: width 0.3s;
 }
 .topbar .topbar__toggle span:nth-child(1) {
@@ -250,19 +305,20 @@ header .header__plant_s_name {
   transform: translateX(180px);
   font-size: 80px;
   color: #f4e285;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px #dd9787;
 }
 header .header__plant_s_name span {
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-  -webkit-text-fill-color: #dd9787;
   -webkit-text-stroke: 2px #dd9787;
+  -webkit-text-fill-color: #dd9787;
 }
 header .header__plant_class {
   transform: translateX(-140px);
   font-size: 60px;
   font-family: "Cinzel", serif;
   font-weight: 900;
-  -webkit-text-stroke: 1px #f4e285;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: #f4e285;
 }
 header .header__corner {
   width: 100%;
@@ -281,17 +337,6 @@ header .header__corner::after {
   content: "";
   background: #52b69a;
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 4% 100%);
-}
-header .header__corner::before {
-  width: 35%;
-  height: 60%;
-  z-index: 3;
-  bottom: 25%;
-  right: 0;
-  position: absolute;
-  content: "";
-  background: #77bfa3;
-  clip-path: polygon(0 0, 100% 0%, 100% 100%, 3% 100%);
 }
 
 .identity__fiche {
@@ -317,6 +362,48 @@ header .header__corner::before {
   position: absolute;
   background: #fefee3;
   clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
+}
+.identity__fiche h3 {
+  color: #fefee3;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.identity__fiche .fiche__container {
+  margin: 20px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 40%;
+  grid-template-rows: auto auto;
+  grid-gap: 10px 40px;
+}
+.identity__fiche .fiche__container .fiche__col {
+  position: relative;
+}
+.identity__fiche .fiche__container .fiche__col h4 {
+  font-size: 20px;
+  color: #f2cc8f;
+  text-transform: uppercase;
+}
+.identity__fiche .fiche__container .fiche__col p {
+  line-height: 20px;
+  font-weight: 200;
+  font-family: "Cairo", sans-serif;
+  color: #fefee3;
+}
+.identity__fiche .fiche__container .fiche__col div:nth-child(1) {
+  margin-bottom: 20px;
+}
+.identity__fiche .fiche__container .fiche__col:nth-child(2)::before {
+  width: 1px;
+  height: 100%;
+  content: "";
+  transform: translateX(-20px);
+  position: absolute;
+  background: #fefee3;
+}
+.identity__fiche .fiche__container .fiche__carousel {
+  height: 300px;
+  overflow: hidden;
+  clip-path: polygon(85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%, 0 0);
 }
 
 /*# sourceMappingURL=main.css.map */

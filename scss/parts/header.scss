@@ -59,11 +59,13 @@ header {
 
         font-size: 80px;
         color: $color-buff;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 2px $color-darksalmon;
 
         span {
             clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-            -webkit-text-fill-color: $color-darksalmon;
             -webkit-text-stroke: 2px $color-darksalmon;
+            -webkit-text-fill-color: $color-darksalmon;
         }
     }
 
@@ -73,8 +75,7 @@ header {
         font-size: 60px;
         font-family: $font-cinzel;
         font-weight: 900;
-        -webkit-text-stroke: 1px $color-buff;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: $color-buff;
     }
 
     .header__corner {
@@ -94,16 +95,6 @@ header {
             content: "";
             background: $color-keppel;
             clip-path: polygon(0 0, 100% 0%, 100% 100%, 4% 100%);
-        }
-        &::before {
-            width: 35%;
-            height: 60%;
-            z-index: 3;
-            bottom: 25%; right: 0;
-            position: absolute;
-            content: "";
-            background: $color-etonblue;
-            clip-path: polygon(0 0, 100% 0%, 100% 100%, 3% 100%);
         }
     }
 }

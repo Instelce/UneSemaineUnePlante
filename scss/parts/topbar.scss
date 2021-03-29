@@ -3,14 +3,15 @@
     padding: 20px 40px;
     top: 0; left: 0;
     position: fixed;
-    z-index: 10;
+    z-index: 1100;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    &:hover .topbar__name {
-        opacity: 1;
+    &:hover .topbar__name > span:nth-child(1) {
+        transform: translateY(0%);
+        // opacity: 1;
     }
 
     .topbar__name {
@@ -18,7 +19,7 @@
         position: relative;
         overflow: hidden;
 
-        opacity: 0;
+        // opacity: 0;
 
         text-transform: uppercase;
         color: $color-lightyellow;
@@ -36,6 +37,10 @@
             }
         }
         
+        & > span:nth-child(1) {
+            transform: translateY(-100%);
+        }
+
         & > span:nth-child(2) {
             -webkit-text-stroke: 1px $color-lightyellow;
             -webkit-text-fill-color: transparent;
@@ -66,6 +71,8 @@
         flex-direction: column;
 
         &:hover {
+            cursor: none;
+            
             span:nth-child(1)::before {
                 width: 25%;
             }
@@ -103,7 +110,7 @@
                 position: absolute;
                 left: 0px;
 
-                background: $color-etonblue;
+                background: $color-darksalmon;
                 transition: width 0.3s;
             }
         }
