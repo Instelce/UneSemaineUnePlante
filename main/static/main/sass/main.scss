@@ -1,0 +1,16 @@
+:root {
+    --main-padding-vertical: 10%;
+}
+
+body {
+    width: 100%;
+    font-family: 'Poppins';
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    padding: var(--main-padding-vertical);
+    position: relative;
+    display: block;
+}
