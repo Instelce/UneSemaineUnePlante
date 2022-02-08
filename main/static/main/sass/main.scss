@@ -1,16 +1,143 @@
 :root {
+    --color-black: #1D1D1F;
+    --color-gray: #86868B;
+    --color-light-gray: #FAFAFA;
     --main-padding-vertical: 10%;
 }
+
+// Imports
+@import 'components/dropdown.scss';
 
 body {
     width: 100%;
     font-family: 'Poppins';
     font-size: 16px;
+    color: var(--color-black);
+    background: #FAFAFA;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .container {
     width: 100%;
-    padding: var(--main-padding-vertical);
+    height: 200%;
+    padding: 20px var(--main-padding-vertical);
     position: relative;
     display: block;
+}
+
+
+// Topbar
+.topbar {
+    width: 100%;
+    padding: 20px var(--main-padding-vertical);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .topbar__name {
+        h2 {
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 10px;
+        }
+        span {
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+
+    .topbar__menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .topbar__section {
+            font-size: 12px;
+            color: var(--color-gray);
+            transition: color 0.3s;
+    
+            &:hover {
+                color: var(--color-black);
+            }
+        }
+    
+        .topbar__intersection {
+            width: 1px;
+            height: 100%;
+            margin: 0 20px;
+
+            background: var(--color-black);
+        }
+    }
+}
+
+// Header
+.header {
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+
+    color: #fff;
+    // border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .header__image {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+        overflow: hidden;
+        position: relative;
+        border-radius: 20px;
+        
+        img {
+            width: 100%;
+            position: absolute;
+            background: cover;
+        }
+    }
+
+    .header__body {
+        height: auto;
+        position: absolute;
+        bottom: 60px;
+        text-align: center;
+        
+        h1 {
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 60px;
+        }
+        h3 {
+            font-size: 32px;
+            font-style: italic;
+            font-weight: 600;
+        }
+    }
+
+    .header__arrow {
+        width: 60%;
+        padding: 10px 0px;
+        bottom: 0;
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 0 0 10px 10px;
+
+        background: #34C759;
+    }
 }

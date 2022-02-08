@@ -1,10 +1,123 @@
-{% extends 'main/base.html' %}
+{% extends 'main/base.html' %} {% load static %} {% block content %}
+<header class="header">
+  <div class="header__image">
+    <img src="{% static 'main/images/fumeterre.png' %}" />
+  </div>
+  <div class="header__body">
+    <h1>Fumeterre</h1>
+    <h3>Fumaria officinalis</h3>
+  </div>
+  <div class="header__arrow">
+    <svg
+      width="20"
+      height="11"
+      viewBox="0 0 20 11"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18.205 0.232503L9.90646 8.49758L1.60797 0.232503C1.4597 0.0845349 1.26066 0.00169632 1.05341 0.00169632C0.846147 0.00169632 0.647111 0.0845349 0.498845 0.232503C0.427054 0.304371 0.370021 0.390153 0.331085 0.484825C0.29215 0.579497 0.272095 0.681156 0.272095 0.783847C0.272095 0.886537 0.29215 0.988195 0.331085 1.08287C0.370021 1.17754 0.427054 1.26332 0.498845 1.33519L9.327 10.1296C9.48203 10.284 9.68997 10.3704 9.90646 10.3704C10.123 10.3704 10.3309 10.284 10.4859 10.1296L19.3141 1.33689C19.3864 1.26497 19.4438 1.17897 19.4831 1.08399C19.5223 0.989 19.5425 0.886946 19.5425 0.783847C19.5425 0.680747 19.5223 0.578692 19.4831 0.483706C19.4438 0.38872 19.3864 0.302728 19.3141 0.230806C19.1658 0.0828377 18.9668 0 18.7595 0C18.5523 0 18.3532 0.0828377 18.205 0.230806V0.232503Z"
+        fill="#FFFFFF"
+      />
+    </svg>
+  </div>
+</header>
 
-{% block content %}
-    <nav class="topbar">
-        <div class="topbar__name">
-            <span>Une semaine, une plante</span>
-            <h2>Le Fumeterre</h2>
-        </div>
-    </nav>
-{% endblock content %}
+<section id="section__photo">
+  <div class="section__header">
+    <h2>Photo</h2>
+    <h3>Quelques photos...</h3>
+  </div>
+  <div class="section__body"></div>
+</section>
+{% endblock content %} {% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<script>
+  function invertColor(hex, bw) {
+    if (hex.indexOf("#") === 0) {
+      hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+      throw new Error("Invalid HEX color.");
+    }
+    var r = parseInt(hex.slice(0, 2), 16),
+      g = parseInt(hex.slice(2, 4), 16),
+      b = parseInt(hex.slice(4, 6), 16);
+    if (bw) {
+      // https://stackoverflow.com/a/3943023/112731
+      return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? "#000000" : "#FFFFFF";
+    }
+    // invert color components
+    r = (255 - r).toString(16);
+    g = (255 - g).toString(16);
+    b = (255 - b).toString(16);
+    // pad each with zeros and return
+    return "#" + padZero(r) + padZero(g) + padZero(b);
+  }
+
+  function padZero(str, len) {
+    len = len || 2;
+    var zeros = new Array(len).join("0");
+    return (zeros + str).slice(-len);
+  }
+
+  function decToHex(value) {
+    if (value > 255) {
+      return "FF";
+    } else if (value < 0) {
+      return "00";
+    } else {
+      return value.toString(16).padStart(2, "0").toUpperCase();
+    }
+  }
+  function rgbToHex(r, g, b) {
+    return "#" + decToHex(r) + decToHex(g) + decToHex(b);
+  }
+
+  const colorThief = new ColorThief();
+  const img = document.querySelector(".header__image img");
+
+  // Make sure image is finished loading
+  if (img.complete) {
+    const mainColorRGB = colorThief.getColor(img);
+    const mainColorHex = rgbToHex(
+      mainColorRGB[0],
+      mainColorRGB[1],
+      mainColorRGB[2]
+    );
+    const invertColorImage = invertColor(mainColorHex, mainColorRGB);
+    console.log(mainColorRGB, mainColorHex, invertColorImage);
+
+    const headerH1 = document.querySelector(".header__body h1");
+    const headerH3 = document.querySelector(".header__body h3");
+    const headerArrow = document.querySelector(".header__arrow");
+
+    headerH1.style = `color: ${invertColorImage};`;
+    headerH3.style = `color: ${invertColorImage};`;
+    headerArrow.style = `background: ${mainColorHex};`;
+  } else {
+    image.addEventListener("load", function () {
+      const mainColorRGB = colorThief.getColor(img);
+      const mainColorHex = rgbToHex(
+        mainColorRGB[0],
+        mainColorRGB[1],
+        mainColorRGB[2]
+      );
+      const invertColorImage = invertColor(mainColorHex, mainColorRGB);
+      console.log(mainColorRGB, mainColorHex, invertColorImage);
+
+      const headerH1 = document.querySelector(".header__body h1");
+      const headerH3 = document.querySelector(".header__body h3");
+      const headerArrow = document.querySelector(".header__arrow");
+
+      headerH1.style = `color: ${invertColorImage};`;
+      headerH3.style = `color: ${invertColorImage};`;
+      headerArrow.style = `background: ${mainColorHex};`;
+    });
+  }
+</script>
+{% endblock script %}

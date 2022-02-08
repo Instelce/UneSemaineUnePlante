@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav class="topbar">
+        <a href="#" class="topbar__name">
+            <h2>Le Fumeterre</h2>
+            <span>Une semaine, une plante</span>
+        </div>
+
+        <div class="topbar__menu">
+            <a href="#" class="topbar__section">Où la trouve-t-on ?</a>
+            <span class="topbar__intersection"></span>
+            <div class="dropdown">
+                <div class="dropdown__toggle" onclick="menuToggle()">
+                    <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.205 0.232503L9.90646 8.49758L1.60797 0.232503C1.4597 0.0845349 1.26066 0.00169632 1.05341 0.00169632C0.846147 0.00169632 0.647111 0.0845349 0.498845 0.232503C0.427054 0.304371 0.370021 0.390153 0.331085 0.484825C0.29215 0.579497 0.272095 0.681156 0.272095 0.783847C0.272095 0.886537 0.29215 0.988195 0.331085 1.08287C0.370021 1.17754 0.427054 1.26332 0.498845 1.33519L9.327 10.1296C9.48203 10.284 9.68997 10.3704 9.90646 10.3704C10.123 10.3704 10.3309 10.284 10.4859 10.1296L19.3141 1.33689C19.3864 1.26497 19.4438 1.17897 19.4831 1.08399C19.5223 0.989 19.5425 0.886946 19.5425 0.783847C19.5425 0.680747 19.5223 0.578692 19.4831 0.483706C19.4438 0.38872 19.3864 0.302728 19.3141 0.230806C19.1658 0.0828377 18.9668 0 18.7595 0C18.5523 0 18.3532 0.0828377 18.205 0.230806V0.232503Z" fill="#86868B"/>
+                        </svg>
+                        
+                </div>
+                <ul class="dropdown__menu">
+                    <li class="dropdown__item"><a href="#">Photo</a></li>
+                    <li class="dropdown__item"><a href="#">Habitat</a></li>
+                    <li class="dropdown__item"><a href="#">Recette</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         {% block content %}
         {% endblock content %}
@@ -24,5 +50,12 @@
 
     {% block script %}
     {% endblock script %}
+
+    <script>
+        function menuToggle() {
+            const toggleMenu = document.querySelector('.dropdown__menu')
+            toggleMenu.classList.toggle('is-visible')
+        }
+    </script>
 </body>
 </html>
